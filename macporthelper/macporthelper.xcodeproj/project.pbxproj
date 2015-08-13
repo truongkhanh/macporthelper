@@ -12,9 +12,11 @@
 		1C29AC441B7CC7480070E76E /* macporthelper.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 1C29AC431B7CC7480070E76E /* macporthelper.xcscheme */; };
 		1C29AC471B7CC7480070E76E /* macporthelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C29AC461B7CC7480070E76E /* macporthelper.m */; };
 		1C29AC4A1B7CC7480070E76E /* NSObject_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C29AC491B7CC7480070E76E /* NSObject_Extension.m */; };
+		548E8404D1FE629C1A87F51A /* libPods-macporthelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4351805AE42A2ACF110A0A /* libPods-macporthelper.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12919509F57C27194AD0A2B9 /* Pods-macporthelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macporthelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-macporthelper/Pods-macporthelper.release.xcconfig"; sourceTree = "<group>"; };
 		1C29AC391B7CC7480070E76E /* macporthelper.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macporthelper.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C29AC3C1B7CC7480070E76E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1C29AC3E1B7CC7480070E76E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -24,6 +26,8 @@
 		1C29AC461B7CC7480070E76E /* macporthelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = macporthelper.m; sourceTree = "<group>"; };
 		1C29AC481B7CC7480070E76E /* NSObject_Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSObject_Extension.h; sourceTree = "<group>"; };
 		1C29AC491B7CC7480070E76E /* NSObject_Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSObject_Extension.m; sourceTree = "<group>"; };
+		2C4351805AE42A2ACF110A0A /* libPods-macporthelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-macporthelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F855146D5D06EC9639E940BF /* Pods-macporthelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macporthelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-macporthelper/Pods-macporthelper.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 			files = (
 				1C29AC3D1B7CC7480070E76E /* AppKit.framework in Frameworks */,
 				1C29AC3F1B7CC7480070E76E /* Foundation.framework in Frameworks */,
+				548E8404D1FE629C1A87F51A /* libPods-macporthelper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +50,7 @@
 				1C29AC401B7CC7480070E76E /* macporthelper */,
 				1C29AC3B1B7CC7480070E76E /* Frameworks */,
 				1C29AC3A1B7CC7480070E76E /* Products */,
+				F5BE120078DEFE39A327259B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +67,7 @@
 			children = (
 				1C29AC3C1B7CC7480070E76E /* AppKit.framework */,
 				1C29AC3E1B7CC7480070E76E /* Foundation.framework */,
+				2C4351805AE42A2ACF110A0A /* libPods-macporthelper.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -86,6 +93,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F5BE120078DEFE39A327259B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F855146D5D06EC9639E940BF /* Pods-macporthelper.debug.xcconfig */,
+				12919509F57C27194AD0A2B9 /* Pods-macporthelper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -93,9 +109,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1C29AC4D1B7CC7480070E76E /* Build configuration list for PBXNativeTarget "macporthelper" */;
 			buildPhases = (
+				D34AB8050457AC9ED2D39B45 /* Check Pods Manifest.lock */,
 				1C29AC351B7CC7480070E76E /* Sources */,
 				1C29AC361B7CC7480070E76E /* Resources */,
 				1C29AC371B7CC7480070E76E /* Frameworks */,
+				2D65606F72F16427CF0DFF11 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -147,6 +165,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D65606F72F16427CF0DFF11 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-macporthelper/Pods-macporthelper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D34AB8050457AC9ED2D39B45 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1C29AC351B7CC7480070E76E /* Sources */ = {
@@ -234,6 +285,7 @@
 		};
 		1C29AC4E1B7CC7480070E76E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F855146D5D06EC9639E940BF /* Pods-macporthelper.debug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
@@ -248,6 +300,7 @@
 		};
 		1C29AC4F1B7CC7480070E76E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12919509F57C27194AD0A2B9 /* Pods-macporthelper.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
@@ -279,6 +332,7 @@
 				1C29AC4F1B7CC7480070E76E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

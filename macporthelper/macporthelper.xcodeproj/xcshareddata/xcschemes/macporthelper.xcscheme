@@ -14,7 +14,21 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "890A4B3E171F031300AFE577"
+               BlueprintIdentifier = "B6711686028AB4CA5EB78AEF91636D90"
+               BuildableName = "libDTXcodeUtils.a"
+               BlueprintName = "DTXcodeUtils"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1C29AC381B7CC7480070E76E"
                BuildableName = "macporthelper.xcplugin"
                BlueprintName = "macporthelper"
                ReferencedContainer = "container:macporthelper.xcodeproj">
@@ -43,6 +57,15 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "B6711686028AB4CA5EB78AEF91636D90"
+            BuildableName = "libDTXcodeUtils.a"
+            BlueprintName = "DTXcodeUtils"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -56,15 +79,17 @@
       allowLocationSimulation = "NO"
       viewDebuggingEnabled = "No">
       <PathRunnable
+         runnableDebuggingMode = "0"
+         BundleIdentifier = "com.apple.dt.Xcode"
          FilePath = "/Applications/Xcode.app">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "890A4B3E171F031300AFE577"
-            BuildableName = "macporthelper.xcplugin"
-            BlueprintName = "macporthelper"
-            ReferencedContainer = "container:macporthelper.xcodeproj">
+            BlueprintIdentifier = "B6711686028AB4CA5EB78AEF91636D90"
+            BuildableName = "libDTXcodeUtils.a"
+            BlueprintName = "DTXcodeUtils"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,6 +101,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "B6711686028AB4CA5EB78AEF91636D90"
+            BuildableName = "libDTXcodeUtils.a"
+            BlueprintName = "DTXcodeUtils"
+            ReferencedContainer = "container:Pods/Pods.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

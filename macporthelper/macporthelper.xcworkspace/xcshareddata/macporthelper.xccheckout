@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1238FE35-854D-488A-8BB9-78CEE88852B0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>macporthelper</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2068D4D9B13753CFC97039AE81FB6832F2B02325</key>
+		<string>https://github.com/truongkhanh/macporthelper</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>macporthelper/macporthelper.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2068D4D9B13753CFC97039AE81FB6832F2B02325</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/truongkhanh/macporthelper</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2068D4D9B13753CFC97039AE81FB6832F2B02325</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2068D4D9B13753CFC97039AE81FB6832F2B02325</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MacPortHelper</string>
+		</dict>
+	</array>
+</dict>
+</plist>
