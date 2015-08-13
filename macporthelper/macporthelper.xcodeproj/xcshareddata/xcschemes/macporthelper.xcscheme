@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B6711686028AB4CA5EB78AEF91636D90"
+               BlueprintIdentifier = "8C4ADDB32A2F71E95D7F633AFF43C773"
                BuildableName = "libDTXcodeUtils.a"
                BlueprintName = "DTXcodeUtils"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -60,7 +60,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B6711686028AB4CA5EB78AEF91636D90"
+            BlueprintIdentifier = "8C4ADDB32A2F71E95D7F633AFF43C773"
             BuildableName = "libDTXcodeUtils.a"
             BlueprintName = "DTXcodeUtils"
             ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -86,7 +86,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B6711686028AB4CA5EB78AEF91636D90"
+            BlueprintIdentifier = "8C4ADDB32A2F71E95D7F633AFF43C773"
             BuildableName = "libDTXcodeUtils.a"
             BlueprintName = "DTXcodeUtils"
             ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -104,7 +104,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B6711686028AB4CA5EB78AEF91636D90"
+            BlueprintIdentifier = "8C4ADDB32A2F71E95D7F633AFF43C773"
             BuildableName = "libDTXcodeUtils.a"
             BlueprintName = "DTXcodeUtils"
             ReferencedContainer = "container:Pods/Pods.xcodeproj">

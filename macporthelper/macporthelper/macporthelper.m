@@ -7,6 +7,8 @@
 //
 
 #import "macporthelper.h"
+#import "DTXcodeHeaders.h"
+#import "DTXcodeUtils.h"
 
 @interface macporthelper()
 
@@ -33,6 +35,22 @@
     return self;
 }
 
+- (void)addCheckOutTFSMenu:(NSMenuItem *)menuItem
+{
+    NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Checkout TFS" action:@selector(doCheckoutTFS) keyEquivalent:@""];
+    //[actionMenuItem setKeyEquivalentModifierMask:NSAlphaShiftKeyMask | NSControlKeyMask];
+    [actionMenuItem setTarget:self];
+    [[menuItem submenu] addItem:actionMenuItem];
+}
+
+- (void)addImportVCX:(NSMenuItem *)menuItem
+{
+    NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Import VCX file" action:@selector(doImportVCX) keyEquivalent:@""];
+    //[actionMenuItem setKeyEquivalentModifierMask:NSAlphaShiftKeyMask | NSControlKeyMask];
+    [actionMenuItem setTarget:self];
+    [[menuItem submenu] addItem:actionMenuItem];
+}
+
 - (void)didApplicationFinishLaunchingNotification:(NSNotification*)noti
 {
     //removeObserver
@@ -43,18 +61,24 @@
     NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
     if (menuItem) {
         [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-        NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Do Action" action:@selector(doMenuAction) keyEquivalent:@""];
-        //[actionMenuItem setKeyEquivalentModifierMask:NSAlphaShiftKeyMask | NSControlKeyMask];
-        [actionMenuItem setTarget:self];
-        [[menuItem submenu] addItem:actionMenuItem];
+        [self addCheckOutTFSMenu:menuItem];
+        [self addImportVCX:menuItem];
     }
 }
 
-// Sample Action, for menu item:
-- (void)doMenuAction
+
+- (void)doCheckoutTFS
+{
+    IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:ideEditor.fileURL];
+    [alert runModal];
+}
+
+- (void)doImportVCX
 {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Hello, World"];
+    [alert setMessageText:@"Import VCX File"];
     [alert runModal];
 }
 
