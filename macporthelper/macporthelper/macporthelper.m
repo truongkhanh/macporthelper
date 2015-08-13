@@ -51,6 +51,22 @@
     [[menuItem submenu] addItem:actionMenuItem];
 }
 
+- (void)addAutoFixHeaderPath:(NSMenuItem *)menuItem
+{
+    NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Fix Header Path" action:@selector(doFixHeaderPath) keyEquivalent:@""];
+    //[actionMenuItem setKeyEquivalentModifierMask:NSAlphaShiftKeyMask | NSControlKeyMask];
+    [actionMenuItem setTarget:self];
+    [[menuItem submenu] addItem:actionMenuItem];
+}
+
+- (void)addOpenTerminal:(NSMenuItem *)menuItem
+{
+    NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Open Terminal" action:@selector(doOpenTerminal) keyEquivalent:@""];
+    //[actionMenuItem setKeyEquivalentModifierMask:NSAlphaShiftKeyMask | NSControlKeyMask];
+    [actionMenuItem setTarget:self];
+    [[menuItem submenu] addItem:actionMenuItem];
+}
+
 - (void)didApplicationFinishLaunchingNotification:(NSNotification*)noti
 {
     //removeObserver
@@ -63,6 +79,8 @@
         [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
         [self addCheckOutTFSMenu:menuItem];
         [self addImportVCX:menuItem];
+        [self addAutoFixHeaderPath:menuItem];
+        [self addOpenTerminal:menuItem];
     }
 }
 
@@ -80,6 +98,26 @@
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:@"Import VCX File"];
     [alert runModal];
+}
+
+- (void)doFixHeaderPath
+{
+    IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:ideEditor.fileURL];
+    [alert runModal];
+    
+    //Follow here http://www.overacker.me/blog/2015/01/25/creating-an-xcode-plugin
+}
+
+- (void)doOpenTerminal
+{
+    IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:ideEditor.fileURL];
+    [alert runModal];
+    
+
 }
 
 - (void)dealloc
