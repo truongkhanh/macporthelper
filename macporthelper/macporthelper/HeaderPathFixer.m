@@ -7,6 +7,7 @@
 //
 
 #import "HeaderPathFixer.h"
+#import <AppKit/AppKit.h>
 #import "DTXcodeHeaders.h"
 #import "DTXcodeUtils.h"
 
@@ -33,7 +34,7 @@
     NSArray* lines = [source componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 
     for(NSString * line in lines){
-        if([line containsString:@"#include"]){
+        if([line hasPrefix:@"#include"]){
             NSString *newLine = [line stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
             [result appendFormat:@"%@\n", newLine];
         }

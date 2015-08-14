@@ -7,11 +7,21 @@
 //
 
 #import "TFSUltility.h"
+#import <AppKit/AppKit.h>
 
 @implementation TFSUltility
 - (BOOL)checkout:(NSURL *)filePath
 {
-    NSLog(@"Check out: %@", [filePath absoluteString]);
-    return FALSE;
+    NSLog(@"Checking out %@ ...", [filePath path]);
+  NSString *command = [NSString stringWithFormat: @"tf checkout %@", [filePath path]];
+  NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];
+  NSAppleEventDescriptor * result = [as executeAndReturnError:nil];
+  if(result){
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:result];
+    [alert runModal];
+  }
+  
+  return (result == nil);
 }
 @end
