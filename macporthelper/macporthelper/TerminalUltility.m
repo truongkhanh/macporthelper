@@ -11,7 +11,15 @@
 @implementation TerminalUltility
 - (void)open:(NSURL *)filePath
 {
-    NSLog(@"Open Terminal: %@", [filePath absoluteString]);
-
+    NSLog(@"Open Terminal: %@", [filePath path]);
+    [self openTerminal:[[filePath path] stringByDeletingLastPathComponent]];
 }
+
+- (void)openTerminal:(NSString*)path
+{
+    
+    NSString *s = [NSString stringWithFormat: @"tell application \"Terminal\"\n if not (exists window 1) then reopen\n activate\n do script \"cd %@\" in window 1\n end tell", path];
+    NSAppleScript *as = [[NSAppleScript alloc] initWithSource: s]; [as executeAndReturnError:nil];
+}
+
 @end
