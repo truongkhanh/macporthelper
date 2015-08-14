@@ -13,17 +13,13 @@
 - (BOOL)checkout:(NSURL *)filePath
 {
     NSLog(@"Checking out %@ ...", [filePath path]);
+    NSString *command = [NSString stringWithFormat: @"tell application \"Terminal\"\n if not (exists window 1) then reopen\n activate\n do script \"tf checkout %@\" in window 1\n end tell", [filePath path]];
+    NSLog(command);
     
-    NSDictionary *errorInfo = nil;
-    NSString *command = [NSString stringWithFormat: @"tf checkout %@", [filePath path]];
     NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];
-    NSAppleEventDescriptor * result = [as executeAndReturnError:&errorInfo];
-    if(errorInfo){
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"Fail to check out"];
-        [alert runModal];
-    }
+    [as executeAndReturnError:nil];
     
-    return (errorInfo == nil);
+    
+    return nil;
 }
 @end
