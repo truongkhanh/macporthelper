@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 
 @interface HeaderPathFixer : NSObject
 - (void)fix:(NSURL *)filePath;
