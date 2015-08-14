@@ -9,6 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface VCXImporter : NSObject
-- (BOOL)import:(NSURL *)filePath;
-
+- (BOOL)import:(NSString *)filePath vcProj:(NSString*)filePath2;
 @end

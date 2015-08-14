@@ -82,8 +82,8 @@
     NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
     if (menuItem) {
         [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-        [self addCheckOutTFSMenu:menuItem];
         [self addImportVCX:menuItem];
+        [self addCheckOutTFSMenu:menuItem];
         [self addAutoFixHeaderPath:menuItem];
         [self addOpenTerminal:menuItem];
     }
@@ -100,11 +100,33 @@
 
 - (void)doImportVCX
 {
-    //TODO Open dialog to select file to import
-    NSURL *filePath = [[NSURL alloc] init];
+    NSOpenPanel* panel = [NSOpenPanel openPanel];
+    [panel setCanChooseFiles:YES];
+    
+    NSInteger cnt = [panel runModal];
+    if(cnt == NSFileHandlingPanelOKButton)
+    {
+      [panel.URL fileSystemRepresentation];
+      NSURL *filePath = [panel.URL filePathURL];
+        
+        //
+        NSInteger cnt = [panel runModal];
+        if(cnt == NSFileHandlingPanelOKButton)
+        {
+            [panel.URL fileSystemRepresentation];
+            NSURL *filePath2 = [panel.URL filePathURL];
+            
+            VCXImporter *importer = [[VCXImporter alloc] init];
 
-    VCXImporter *importer = [[VCXImporter alloc] init];
-    [importer import:filePath];
+
+            
+            [importer import:filePath.path vcProj:filePath2.path];
+        }
+        //
+        
+
+      
+    }
 }
 
 - (void)doFixHeaderPath
