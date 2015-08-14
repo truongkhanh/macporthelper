@@ -9,6 +9,11 @@
 #import "macporthelper.h"
 #import "DTXcodeHeaders.h"
 #import "DTXcodeUtils.h"
+#import "TFSUltility.h"
+#import "VCXImporter.h"
+#import "HeaderPathFixer.h"
+#import "TerminalUltility.h"
+
 
 @interface macporthelper()
 
@@ -88,36 +93,34 @@
 - (void)doCheckoutTFS
 {
     IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:ideEditor.fileURL];
-    [alert runModal];
+
+    TFSUltility *tfs = [[TFSUltility alloc] init];
+    [tfs checkout:ideEditor.fileURL];
 }
 
 - (void)doImportVCX
 {
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Import VCX File"];
-    [alert runModal];
+    //TODO Open dialog to select file to import
+    NSURL *filePath = [[NSURL alloc] init];
+
+    VCXImporter *importer = [[VCXImporter alloc] init];
+    [importer import:filePath];
 }
 
 - (void)doFixHeaderPath
 {
     IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:ideEditor.fileURL];
-    [alert runModal];
     
-    //Follow here http://www.overacker.me/blog/2015/01/25/creating-an-xcode-plugin
+    HeaderPathFixer * fixer = [[HeaderPathFixer alloc] init];
+    [fixer fix:ideEditor.fileURL];
 }
 
 - (void)doOpenTerminal
 {
     IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:ideEditor.fileURL];
-    [alert runModal];
     
-
+    TerminalUltility *terminal = [[TerminalUltility alloc] init];
+    [terminal open:ideEditor.fileURL];
 }
 
 - (void)dealloc
