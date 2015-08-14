@@ -13,15 +13,17 @@
 - (BOOL)checkout:(NSURL *)filePath
 {
     NSLog(@"Checking out %@ ...", [filePath path]);
-  NSString *command = [NSString stringWithFormat: @"tf checkout %@", [filePath path]];
-  NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];
-  NSAppleEventDescriptor * result = [as executeAndReturnError:nil];
-  if(result){
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:result];
-    [alert runModal];
-  }
-  
-  return (result == nil);
+    
+    NSDictionary *errorInfo = nil;
+    NSString *command = [NSString stringWithFormat: @"tf checkout %@", [filePath path]];
+    NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];
+    NSAppleEventDescriptor * result = [as executeAndReturnError:&errorInfo];
+    if(errorInfo){
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"Fail to check out"];
+        [alert runModal];
+    }
+    
+    return (errorInfo == nil);
 }
 @end
