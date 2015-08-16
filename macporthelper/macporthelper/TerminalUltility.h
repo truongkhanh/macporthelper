@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface TerminalUltility : NSObject
-- (void)open:(NSURL *)filePath;
+- (void)open:(NSString *)filePath;
 
 @end

@@ -95,46 +95,38 @@
     IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
 
     TFSUltility *tfs = [[TFSUltility alloc] init];
-    [tfs checkout:ideEditor.fileURL];
+    [tfs checkout:[ideEditor.fileURL path]];
 }
 
 - (void)doImportVCX
 {
     NSOpenPanel* panel = [NSOpenPanel openPanel];
     [panel setCanChooseFiles:YES];
+    [panel setTitle:@"Select VCX project file (*.vcxproj)"];
     
     NSInteger cnt = [panel runModal];
     if(cnt == NSFileHandlingPanelOKButton)
     {
-      [panel.URL fileSystemRepresentation];
-      NSURL *filePath = [panel.URL filePathURL];
+        [panel.URL fileSystemRepresentation];
+        NSURL *vcxProj = [panel.URL filePathURL];
         
-        //
-        NSInteger cnt = [panel runModal];
+        [panel setTitle:@"Select XCode project file (*.xcodeproj)"];
+        cnt = [panel runModal];
         if(cnt == NSFileHandlingPanelOKButton)
         {
             [panel.URL fileSystemRepresentation];
-            NSURL *filePath2 = [panel.URL filePathURL];
+            NSURL *xcodeProj = [panel.URL filePathURL];
             
             VCXImporter *importer = [[VCXImporter alloc] init];
-
-
-            
-            [importer import:filePath.path vcProj:filePath2.path];
+            [importer importVCXProj:vcxProj.path toXCodeProj:xcodeProj.path];
         }
-        //
-        
-
-      
     }
 }
 
 - (void)doFixHeaderPath
 {
-    IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
-    
     HeaderPathFixer * fixer = [[HeaderPathFixer alloc] init];
-    [fixer fix:ideEditor.fileURL];
+    [fixer fix];
 }
 
 - (void)doOpenTerminal
@@ -142,7 +134,7 @@
     IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
     
     TerminalUltility *terminal = [[TerminalUltility alloc] init];
-    [terminal open:ideEditor.fileURL];
+    [terminal open:[ideEditor.fileURL path]];
 }
 
 - (void)dealloc

@@ -8,18 +8,18 @@
 
 #import "TFSUltility.h"
 #import <AppKit/AppKit.h>
+#import "Ultility.h";
 
 @implementation TFSUltility
-- (BOOL)checkout:(NSURL *)filePath
+- (BOOL)checkout:(NSString *)filePath
 {
-    NSLog(@"Checking out %@ ...", [filePath path]);
-    NSString *command = [NSString stringWithFormat: @"tell application \"Terminal\"\n if not (exists window 1) then reopen\n activate\n do script \"tf checkout %@\" in window 1\n end tell", [filePath path]];
-    NSLog(command);
-    
+
+    NSLog(@"Checking out %@ ...", filePath);
+    NSString *command = [NSString stringWithFormat:@"tf checkout %@", filePath];
+    command = [Ultility buildCommand:command];
     NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];
     [as executeAndReturnError:nil];
     
-    
-    return nil;
+    return TRUE;
 }
 @end

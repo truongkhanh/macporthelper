@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C12410D1B80209900F95059 /* Ultility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C12410C1B80209900F95059 /* Ultility.m */; };
 		1C29AC3D1B7CC7480070E76E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C29AC3C1B7CC7480070E76E /* AppKit.framework */; };
 		1C29AC3F1B7CC7480070E76E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C29AC3E1B7CC7480070E76E /* Foundation.framework */; };
 		1C29AC441B7CC7480070E76E /* macporthelper.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 1C29AC431B7CC7480070E76E /* macporthelper.xcscheme */; };
@@ -21,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		12919509F57C27194AD0A2B9 /* Pods-macporthelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macporthelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-macporthelper/Pods-macporthelper.release.xcconfig"; sourceTree = "<group>"; };
+		1C12410B1B80209900F95059 /* Ultility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ultility.h; sourceTree = "<group>"; };
+		1C12410C1B80209900F95059 /* Ultility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ultility.m; sourceTree = "<group>"; };
 		1C29AC391B7CC7480070E76E /* macporthelper.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macporthelper.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C29AC3C1B7CC7480070E76E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1C29AC3E1B7CC7480070E76E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -125,6 +128,8 @@
 				1C9288BF1B7D7B7B003A06F7 /* HeaderPathFixer.m */,
 				1C9288C11B7D7B90003A06F7 /* TerminalUltility.h */,
 				1C9288C21B7D7B90003A06F7 /* TerminalUltility.m */,
+				1C12410B1B80209900F95059 /* Ultility.h */,
+				1C12410C1B80209900F95059 /* Ultility.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C12410D1B80209900F95059 /* Ultility.m in Sources */,
 				1C29AC471B7CC7480070E76E /* macporthelper.m in Sources */,
 				1C29AC4A1B7CC7480070E76E /* NSObject_Extension.m in Sources */,
 				1C9288BA1B7D7B48003A06F7 /* TFSUltility.m in Sources */,

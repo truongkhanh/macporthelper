@@ -10,18 +10,13 @@
 #import <AppKit/AppKit.h>
 #import "DTXcodeHeaders.h"
 #import "DTXcodeUtils.h"
+#import "Ultility.h"
 
 @implementation HeaderPathFixer
-- (void)fix:(NSURL *)filePath
+- (void)fix
 {
-    //Follow here http://www.overacker.me/blog/2015/01/25/creating-an-xcode-plugin
-    NSLog(@"Fix header file: %@", [filePath absoluteString]);
-
-    
     DVTSourceTextView *sourceTextView = [DTXcodeUtils currentSourceTextView];
     NSString *source = [sourceTextView string];
-
-    
     NSString * newSource = [self fixHeaderPath:source];
     [sourceTextView setString:newSource];
 
@@ -31,16 +26,20 @@
 {
     NSMutableString *result = [[NSMutableString alloc] init];
     
-    NSArray* lines = [source componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    //not work for some old files, new empty lines are created
+//    NSArray* lines = [source componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    NSArray *lines = [source componentsSeparatedByString:@"\n"];
 
     for(NSString * line in lines){
         if([line hasPrefix:@"#include"]){
             NSString *newLine = [line stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
-            [result appendFormat:@"%@\n", newLine];
+            [Ultility append:result withLine:newLine];
         }
         else{
-            [result appendFormat:@"%@\n", line];
+            [Ultility append:result withLine:line];
         }
+        
+        NSLog(result);
     }
     
     return [NSString stringWithString:result];

@@ -10,6 +10,6 @@
 
 
 @interface HeaderPathFixer : NSObject
-- (void)fix:(NSURL *)filePath;
+- (void)fix;
 
 @end

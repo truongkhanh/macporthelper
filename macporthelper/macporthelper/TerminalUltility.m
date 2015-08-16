@@ -7,19 +7,22 @@
 //
 
 #import "TerminalUltility.h"
+#import "Ultility.h"
 
 @implementation TerminalUltility
-- (void)open:(NSURL *)filePath
+- (void)open:(NSString *)filePath
 {
-    NSLog(@"Open Terminal: %@", [filePath path]);
-    [self openTerminal:[[filePath path] stringByDeletingLastPathComponent]];
+    NSString *parentFolderPath = [filePath stringByDeletingLastPathComponent];
+    NSLog(@"Open Terminal @ %@", parentFolderPath);
+    [self openTerminal:parentFolderPath];
 }
 
 - (void)openTerminal:(NSString*)path
 {
-    
-    NSString *s = [NSString stringWithFormat: @"tell application \"Terminal\"\n if not (exists window 1) then reopen\n activate\n do script \"cd %@\" in window 1\n end tell", path];
-    NSAppleScript *as = [[NSAppleScript alloc] initWithSource: s]; [as executeAndReturnError:nil];
+    NSString *command = [NSString stringWithFormat:@"cd %@", path];
+    command = [Ultility buildCommand:command];
+    NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];
+    [as executeAndReturnError:nil];
 }
 
 @end

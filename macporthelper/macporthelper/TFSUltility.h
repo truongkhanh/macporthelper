@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface TFSUltility : NSObject
-- (BOOL)checkout:(NSURL *)filePath;
+- (BOOL)checkout:(NSString *)filePath;
 
 @end

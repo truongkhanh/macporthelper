@@ -8,31 +8,20 @@
 
 #import "VCXImporter.h"
 #import <AppKit/AppKit.h>
-
+#import "Ultility.h"
 
 @implementation VCXImporter
-- (BOOL)import:(NSString *)filePath vcProj:(NSString*)filePath2
+- (BOOL)importVCXProj:(NSString *)vcxProj toXCodeProj:(NSString*)xcodeProj
 {
 
-    NSLog(@"Import %@ ...", filePath);
-    //TODO compute xcode path
+    NSLog(@"Import %@ VCX Project to %@ XCode Project", vcxProj, xcodeProj);
     
-    
-    NSDictionary *errorInfo = nil;
-    NSString *command = [NSString stringWithFormat: @"tell application \"Terminal\"\n if not (exists window 1) then reopen\n activate\n do script \"/Users/truongkhanh/Desktop/adder/add %@ %@\" in window 1\n end tell", filePath, filePath2];
+    NSString *command = [NSString stringWithFormat:@"/Users/truongkhanh/Desktop/adder/add %@ %@", vcxProj, xcodeProj];
+    command = [Ultility buildCommand:command];
 
-    NSLog(command);
     NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];
-    NSAppleEventDescriptor * result = [as executeAndReturnError:&errorInfo];
-    if(errorInfo){
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:errorInfo];
-        [alert runModal];
-    }
+    [as executeAndReturnError:nil];
     
-    return (errorInfo == nil);
-    
-    
-    return FALSE;
+    return TRUE;
 }
 @end
