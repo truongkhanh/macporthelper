@@ -43,7 +43,6 @@
 - (void)addCheckOutTFSMenu:(NSMenuItem *)menuItem
 {
     NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Checkout TFS" action:@selector(doCheckoutTFS) keyEquivalent:@""];
-    //[actionMenuItem setKeyEquivalentModifierMask:NSAlphaShiftKeyMask | NSControlKeyMask];
     [actionMenuItem setTarget:self];
     [[menuItem submenu] addItem:actionMenuItem];
 }
@@ -51,7 +50,6 @@
 - (void)addImportVCX:(NSMenuItem *)menuItem
 {
     NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Import VCX file" action:@selector(doImportVCX) keyEquivalent:@""];
-    //[actionMenuItem setKeyEquivalentModifierMask:NSAlphaShiftKeyMask | NSControlKeyMask];
     [actionMenuItem setTarget:self];
     [[menuItem submenu] addItem:actionMenuItem];
 }
@@ -59,15 +57,20 @@
 - (void)addAutoFixHeaderPath:(NSMenuItem *)menuItem
 {
     NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Fix Header Path" action:@selector(doFixHeaderPath) keyEquivalent:@""];
-    //[actionMenuItem setKeyEquivalentModifierMask:NSAlphaShiftKeyMask | NSControlKeyMask];
     [actionMenuItem setTarget:self];
     [[menuItem submenu] addItem:actionMenuItem];
+}
+
+- (void)addPrintPath:(NSMenuItem *)menuItem
+{
+  NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Print File Path" action:@selector(doPrintFilePath) keyEquivalent:@""];
+  [actionMenuItem setTarget:self];
+  [[menuItem submenu] addItem:actionMenuItem];
 }
 
 - (void)addOpenTerminal:(NSMenuItem *)menuItem
 {
     NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Open Terminal" action:@selector(doOpenTerminal) keyEquivalent:@""];
-    //[actionMenuItem setKeyEquivalentModifierMask:NSAlphaShiftKeyMask | NSControlKeyMask];
     [actionMenuItem setTarget:self];
     [[menuItem submenu] addItem:actionMenuItem];
 }
@@ -82,9 +85,10 @@
     NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
     if (menuItem) {
         [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-        [self addImportVCX:menuItem];
+//        [self addImportVCX:menuItem];
         [self addCheckOutTFSMenu:menuItem];
         [self addAutoFixHeaderPath:menuItem];
+        [self addPrintPath:menuItem];
         [self addOpenTerminal:menuItem];
     }
 }
@@ -127,6 +131,14 @@
 {
     HeaderPathFixer * fixer = [[HeaderPathFixer alloc] init];
     [fixer fix];
+}
+
+- (void)doPrintFilePath
+{
+    IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
+    
+    TerminalUltility *terminal = [[TerminalUltility alloc] init];
+    [terminal print:[ideEditor.fileURL path]];
 }
 
 - (void)doOpenTerminal

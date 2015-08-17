@@ -10,5 +10,7 @@
 
 @interface TerminalUltility : NSObject
 - (void)open:(NSString *)filePath;
+- (void)print:(NSString *)message;
+
 
 @end

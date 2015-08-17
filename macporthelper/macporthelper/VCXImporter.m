@@ -16,7 +16,7 @@
 
     NSLog(@"Import %@ VCX Project to %@ XCode Project", vcxProj, xcodeProj);
     
-    NSString *command = [NSString stringWithFormat:@"/Users/truongkhanh/Desktop/adder/add %@ %@", vcxProj, xcodeProj];
+    NSString *command = [NSString stringWithFormat:@"$ACMTOP/xcodeproject/MacPortingTools/add %@ %@", vcxProj, xcodeProj];
     command = [Ultility buildCommand:command];
 
     NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];

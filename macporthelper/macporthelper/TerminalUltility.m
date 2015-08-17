@@ -25,4 +25,13 @@
     [as executeAndReturnError:nil];
 }
 
+- (void)print:(NSString *)message
+{
+    NSString *command = [NSString stringWithFormat:@"echo %@", message];
+    command = [Ultility buildCommand:command];
+    NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];
+    [as executeAndReturnError:nil];
+
+}
+
 @end

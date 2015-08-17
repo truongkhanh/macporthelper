@@ -38,8 +38,6 @@
         else{
             [Ultility append:result withLine:line];
         }
-        
-        NSLog(result);
     }
     
     return [NSString stringWithString:result];
