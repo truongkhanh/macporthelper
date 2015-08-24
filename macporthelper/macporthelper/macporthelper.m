@@ -43,6 +43,9 @@
 - (void)addCheckOutTFSMenu:(NSMenuItem *)menuItem
 {
     NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Checkout TFS" action:@selector(doCheckoutTFS) keyEquivalent:@""];
+    [actionMenuItem setKeyEquivalent:@"k"];
+    [actionMenuItem setKeyEquivalentModifierMask:NSAlternateKeyMask | NSCommandKeyMask];
+    
     [actionMenuItem setTarget:self];
     [[menuItem submenu] addItem:actionMenuItem];
 }
