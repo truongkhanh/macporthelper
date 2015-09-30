@@ -25,9 +25,6 @@
 - (NSString *) fixHeaderPath: (NSString *) source
 {
     NSMutableString *result = [[NSMutableString alloc] init];
-    
-    //not work for some old files, new empty lines are created
-//    NSArray* lines = [source componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     NSArray *lines = [source componentsSeparatedByString:@"\n"];
 
     for(NSString * line in lines){

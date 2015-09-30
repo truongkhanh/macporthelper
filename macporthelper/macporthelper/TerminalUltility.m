@@ -14,10 +14,10 @@
 {
     NSString *parentFolderPath = [filePath stringByDeletingLastPathComponent];
     NSLog(@"Open Terminal @ %@", parentFolderPath);
-    [self openTerminal:parentFolderPath];
+    [self openTerminalOnFolder:parentFolderPath];
 }
 
-- (void)openTerminal:(NSString*)path
+- (void)openTerminalOnFolder:(NSString*)path
 {
     NSString *command = [NSString stringWithFormat:@"cd %@", path];
     command = [Ultility buildCommand:command];

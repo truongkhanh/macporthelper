@@ -8,7 +8,7 @@
 
 #import "TFSUltility.h"
 #import <AppKit/AppKit.h>
-#import "Ultility.h";
+#import "Ultility.h"
 
 @implementation TFSUltility
 - (BOOL)checkout:(NSString *)filePath
