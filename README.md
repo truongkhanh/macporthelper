@@ -11,3 +11,5 @@ To run the project, please open "macporthelper.xcworkspace".
 You can easily set the short cut for the menu item by:
 * Go to "System Preferences, Keyboard" and select "Shortcuts" tab. Then select the "App Shortcuts" category on the left panel and create a new shortcut.
 * Select "Xcode" for "Application". For "Menu Title", type correctly the menu item under Edit, e.g., "Checkout TFS" and press the shortcut you want to assign.
+
+Please refer Apple instruction [here](https://support.apple.com/kb/PH13916?locale=en_US) for more details.
