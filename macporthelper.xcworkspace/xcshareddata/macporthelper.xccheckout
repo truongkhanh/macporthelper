@@ -14,11 +14,11 @@
 		<string>https://github.com/truongkhanh/macporthelper</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>macporthelper/macporthelper.xcworkspace</string>
+	<string>macporthelper.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>2068D4D9B13753CFC97039AE81FB6832F2B02325</key>
-		<string>../..</string>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/truongkhanh/macporthelper</string>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>2068D4D9B13753CFC97039AE81FB6832F2B02325</string>
 			<key>IDESourceControlWCCName</key>
-			<string>MacPortHelper</string>
+			<string>macporthelper-test</string>
 		</dict>
 	</array>
 </dict>
