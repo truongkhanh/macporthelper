@@ -80,7 +80,7 @@
 
 - (void)addInsertIfDefMac:(NSMenuItem *)menuItem
 {
-    NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Insert If Def" action:@selector(doInsertIfDef) keyEquivalent:@""];
+    NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Insert #ifdef" action:@selector(doInsertIfDef) keyEquivalent:@""];
     [actionMenuItem setTarget:self];
     [[menuItem submenu] addItem:actionMenuItem];
 }
