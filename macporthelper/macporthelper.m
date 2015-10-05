@@ -78,6 +78,13 @@
     [[menuItem submenu] addItem:actionMenuItem];
 }
 
+- (void)addInsertIfDefMac:(NSMenuItem *)menuItem
+{
+    NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Insert If Def" action:@selector(doInsertIfDef) keyEquivalent:@""];
+    [actionMenuItem setTarget:self];
+    [[menuItem submenu] addItem:actionMenuItem];
+}
+
 - (void)didApplicationFinishLaunchingNotification:(NSNotification*)noti
 {
     //removeObserver
@@ -93,6 +100,7 @@
         [self addAutoFixHeaderPath:menuItem];
         [self addPrintPath:menuItem];
         [self addOpenTerminal:menuItem];
+        [self addInsertIfDefMac: menuItem];
     }
 }
 
@@ -150,6 +158,23 @@
     
     TerminalUltility *terminal = [[TerminalUltility alloc] init];
     [terminal open:[ideEditor.fileURL path]];
+}
+
+- (void)doInsertIfDef
+{
+    DVTSourceTextView *sourceTextView = [DTXcodeUtils currentSourceTextView];
+    NSRange selectedTextRange = [sourceTextView selectedRange];
+    NSString *selectedString = [sourceTextView.textStorage.string substringWithRange:selectedTextRange];
+    NSString *ifDefInsert = @"#ifdef <CONDITION>";
+    NSString *endIfInsert = @"#endif";
+    NSString *newString = [NSString stringWithFormat:@"%@\n%@\n%@", ifDefInsert,
+                                 selectedString, endIfInsert];
+    
+    if (selectedString) {
+        [sourceTextView replaceCharactersInRange:selectedTextRange withString:newString];
+        NSRange newRange = NSMakeRange(selectedTextRange.location, newString.length);
+        [sourceTextView setSelectedRange:newRange];
+    }
 }
 
 - (void)dealloc
