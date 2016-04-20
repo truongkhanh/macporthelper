@@ -10,15 +10,63 @@
 
 @implementation Ultility
 
++ (BOOL)checkout:(NSString *)filePath
+{
+    
+    NSLog(@"Checking out %@ ...", filePath);
+    NSString *command = [NSString stringWithFormat:@"tf checkout %@", filePath];
+    command = [Ultility buildCommand:command];
+    NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];
+    [as executeAndReturnError:nil];
+    
+    return TRUE;
+}
+
++ (BOOL)revert:(NSString *)filePath
+{
+    
+    NSLog(@"Revert change in %@ ...", filePath);
+    NSString *command = [NSString stringWithFormat:@"tf undo %@", filePath];
+    command = [Ultility buildCommand:command];
+    NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];
+    [as executeAndReturnError:nil];
+    
+    return TRUE;
+}
+
++ (void)openInFinder:(NSString*)path
+{
+    NSString *command = [NSString stringWithFormat:@"open %@", path];
+    command = [Ultility buildCommand:command];
+    NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];
+    [as executeAndReturnError:nil];
+}
+
++ (void)openTerminalOnFolder:(NSString*)path
+{
+    NSString *command = [NSString stringWithFormat:@"cd %@", path];
+    command = [Ultility buildCommand:command];
+    NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];
+    [as executeAndReturnError:nil];
+}
+
++ (void)print:(NSString *)message
+{
+    NSString *command = [NSString stringWithFormat:@"echo %@", message];
+    command = [Ultility buildCommand:command];
+    NSAppleScript *as = [[NSAppleScript alloc] initWithSource: command];
+    [as executeAndReturnError:nil];
+    
+}
+
 + (NSString *) buildCommand: (NSString *) command
 {
     NSMutableString *result = [[NSMutableString alloc] init];
     [Ultility append: result withLine: @"tell application \"Terminal\""];
-    [Ultility append: result withLine: @"if not (exists window 1) then reopen"];
     [Ultility append: result withLine: @"activate"];
-    [Ultility append: result withLine: [NSString stringWithFormat:@"do script \"%@\" in window 1", command]];
+    [Ultility append: result withLine: [NSString stringWithFormat:@"do script \"%@\"", command]];
     [Ultility append: result withLine: @"end tell"];
-
+    
     return [NSString stringWithString:result];
 }
 

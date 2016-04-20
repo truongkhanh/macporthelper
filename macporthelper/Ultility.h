@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface Ultility : NSObject
-
-+ (NSString *) buildCommand: (NSString *) command;
-+ (void) append: (NSMutableString *) s withLine: (NSString *) line;
++ (BOOL)checkout:(NSString *)filePath;
++ (BOOL)revert:(NSString *)filePath;
++ (void)openInFinder:(NSString *)path;
++ (void)print:(NSString *)message;
++ (void)openTerminalOnFolder:(NSString*)path;
 @end

@@ -13,10 +13,6 @@
 		1C29AC441B7CC7480070E76E /* macporthelper.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 1C29AC431B7CC7480070E76E /* macporthelper.xcscheme */; };
 		1C29AC471B7CC7480070E76E /* macporthelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C29AC461B7CC7480070E76E /* macporthelper.m */; };
 		1C29AC4A1B7CC7480070E76E /* NSObject_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C29AC491B7CC7480070E76E /* NSObject_Extension.m */; };
-		1C9288BA1B7D7B48003A06F7 /* TFSUltility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9288B91B7D7B48003A06F7 /* TFSUltility.m */; };
-		1C9288BD1B7D7B66003A06F7 /* VCXImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9288BC1B7D7B66003A06F7 /* VCXImporter.m */; };
-		1C9288C01B7D7B7B003A06F7 /* HeaderPathFixer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9288BF1B7D7B7B003A06F7 /* HeaderPathFixer.m */; };
-		1C9288C31B7D7B90003A06F7 /* TerminalUltility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9288C21B7D7B90003A06F7 /* TerminalUltility.m */; };
 		548E8404D1FE629C1A87F51A /* libPods-macporthelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4351805AE42A2ACF110A0A /* libPods-macporthelper.a */; };
 /* End PBXBuildFile section */
 
@@ -33,14 +29,6 @@
 		1C29AC461B7CC7480070E76E /* macporthelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = macporthelper.m; sourceTree = "<group>"; };
 		1C29AC481B7CC7480070E76E /* NSObject_Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSObject_Extension.h; sourceTree = "<group>"; };
 		1C29AC491B7CC7480070E76E /* NSObject_Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSObject_Extension.m; sourceTree = "<group>"; };
-		1C9288B81B7D7B48003A06F7 /* TFSUltility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFSUltility.h; sourceTree = "<group>"; };
-		1C9288B91B7D7B48003A06F7 /* TFSUltility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFSUltility.m; sourceTree = "<group>"; };
-		1C9288BB1B7D7B66003A06F7 /* VCXImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCXImporter.h; sourceTree = "<group>"; };
-		1C9288BC1B7D7B66003A06F7 /* VCXImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCXImporter.m; sourceTree = "<group>"; };
-		1C9288BE1B7D7B7B003A06F7 /* HeaderPathFixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderPathFixer.h; sourceTree = "<group>"; };
-		1C9288BF1B7D7B7B003A06F7 /* HeaderPathFixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderPathFixer.m; sourceTree = "<group>"; };
-		1C9288C11B7D7B90003A06F7 /* TerminalUltility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerminalUltility.h; sourceTree = "<group>"; };
-		1C9288C21B7D7B90003A06F7 /* TerminalUltility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TerminalUltility.m; sourceTree = "<group>"; };
 		2C4351805AE42A2ACF110A0A /* libPods-macporthelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-macporthelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F855146D5D06EC9639E940BF /* Pods-macporthelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macporthelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-macporthelper/Pods-macporthelper.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,14 +108,6 @@
 		1C9288B51B7D7AD7003A06F7 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				1C9288B81B7D7B48003A06F7 /* TFSUltility.h */,
-				1C9288B91B7D7B48003A06F7 /* TFSUltility.m */,
-				1C9288BB1B7D7B66003A06F7 /* VCXImporter.h */,
-				1C9288BC1B7D7B66003A06F7 /* VCXImporter.m */,
-				1C9288BE1B7D7B7B003A06F7 /* HeaderPathFixer.h */,
-				1C9288BF1B7D7B7B003A06F7 /* HeaderPathFixer.m */,
-				1C9288C11B7D7B90003A06F7 /* TerminalUltility.h */,
-				1C9288C21B7D7B90003A06F7 /* TerminalUltility.m */,
 				1C12410B1B80209900F95059 /* Ultility.h */,
 				1C12410C1B80209900F95059 /* Ultility.m */,
 			);
@@ -248,10 +228,6 @@
 				1C12410D1B80209900F95059 /* Ultility.m in Sources */,
 				1C29AC471B7CC7480070E76E /* macporthelper.m in Sources */,
 				1C29AC4A1B7CC7480070E76E /* NSObject_Extension.m in Sources */,
-				1C9288BA1B7D7B48003A06F7 /* TFSUltility.m in Sources */,
-				1C9288C31B7D7B90003A06F7 /* TerminalUltility.m in Sources */,
-				1C9288BD1B7D7B66003A06F7 /* VCXImporter.m in Sources */,
-				1C9288C01B7D7B7B003A06F7 /* HeaderPathFixer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

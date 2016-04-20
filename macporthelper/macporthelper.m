@@ -9,10 +9,7 @@
 #import "macporthelper.h"
 #import "DTXcodeHeaders.h"
 #import "DTXcodeUtils.h"
-#import "TFSUltility.h"
-#import "VCXImporter.h"
-#import "HeaderPathFixer.h"
-#import "TerminalUltility.h"
+#import "Ultility.h"
 
 
 @interface macporthelper()
@@ -43,23 +40,20 @@
 - (void)addCheckOutTFSMenu:(NSMenuItem *)menuItem
 {
     NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Checkout TFS" action:@selector(doCheckoutTFS) keyEquivalent:@""];
-    [actionMenuItem setKeyEquivalent:@"k"];
-    [actionMenuItem setKeyEquivalentModifierMask:NSAlternateKeyMask | NSCommandKeyMask];
-    
     [actionMenuItem setTarget:self];
     [[menuItem submenu] addItem:actionMenuItem];
 }
 
-- (void)addImportVCX:(NSMenuItem *)menuItem
+- (void)addRevertTFSMenu:(NSMenuItem *)menuItem
 {
-    NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Import VCX file" action:@selector(doImportVCX) keyEquivalent:@""];
+    NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Revert TFS" action:@selector(doRevertTFS) keyEquivalent:@""];
     [actionMenuItem setTarget:self];
     [[menuItem submenu] addItem:actionMenuItem];
 }
 
-- (void)addAutoFixHeaderPath:(NSMenuItem *)menuItem
+- (void)addOpenFolder:(NSMenuItem *)menuItem
 {
-    NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Fix Header Path" action:@selector(doFixHeaderPath) keyEquivalent:@""];
+    NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Open Folder" action:@selector(doOpenFolder) keyEquivalent:@""];
     [actionMenuItem setTarget:self];
     [[menuItem submenu] addItem:actionMenuItem];
 }
@@ -78,13 +72,6 @@
     [[menuItem submenu] addItem:actionMenuItem];
 }
 
-- (void)addInsertIfDefMac:(NSMenuItem *)menuItem
-{
-    NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Insert #ifdef" action:@selector(doInsertIfDef) keyEquivalent:@""];
-    [actionMenuItem setTarget:self];
-    [[menuItem submenu] addItem:actionMenuItem];
-}
-
 - (void)didApplicationFinishLaunchingNotification:(NSNotification*)noti
 {
     //removeObserver
@@ -95,12 +82,11 @@
     NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
     if (menuItem) {
         [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-//        [self addImportVCX:menuItem];
         [self addCheckOutTFSMenu:menuItem];
-        [self addAutoFixHeaderPath:menuItem];
+        [self addRevertTFSMenu:menuItem];
+//        [self addOpenFolder: menuItem];
         [self addPrintPath:menuItem];
         [self addOpenTerminal:menuItem];
-        [self addInsertIfDefMac: menuItem];
     }
 }
 
@@ -109,72 +95,37 @@
 {
     IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
 
-    TFSUltility *tfs = [[TFSUltility alloc] init];
-    [tfs checkout:[ideEditor.fileURL path]];
+    [Ultility checkout:[ideEditor.fileURL path]];
 }
 
-- (void)doImportVCX
+- (void)doRevertTFS
 {
-    NSOpenPanel* panel = [NSOpenPanel openPanel];
-    [panel setCanChooseFiles:YES];
-    [panel setTitle:@"Select VCX project file (*.vcxproj)"];
+    IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
     
-    NSInteger cnt = [panel runModal];
-    if(cnt == NSFileHandlingPanelOKButton)
-    {
-        [panel.URL fileSystemRepresentation];
-        NSURL *vcxProj = [panel.URL filePathURL];
-        
-        [panel setTitle:@"Select XCode project file (*.xcodeproj)"];
-        cnt = [panel runModal];
-        if(cnt == NSFileHandlingPanelOKButton)
-        {
-            [panel.URL fileSystemRepresentation];
-            NSURL *xcodeProj = [panel.URL filePathURL];
-            
-            VCXImporter *importer = [[VCXImporter alloc] init];
-            [importer importVCXProj:vcxProj.path toXCodeProj:xcodeProj.path];
-        }
-    }
+    [Ultility revert:[ideEditor.fileURL path]];
 }
 
-- (void)doFixHeaderPath
+- (void)doOpenFolder
 {
-    HeaderPathFixer * fixer = [[HeaderPathFixer alloc] init];
-    [fixer fix];
+    IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
+    
+    NSString *parentFolderPath = [[ideEditor.fileURL path] stringByDeletingLastPathComponent];
+    [Ultility openInFinder:parentFolderPath];
 }
 
 - (void)doPrintFilePath
 {
     IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
     
-    TerminalUltility *terminal = [[TerminalUltility alloc] init];
-    [terminal print:[ideEditor.fileURL path]];
+    [Ultility print:[ideEditor.fileURL path]];
 }
 
 - (void)doOpenTerminal
 {
     IDESourceCodeDocument * ideEditor = [DTXcodeUtils currentSourceCodeDocument];
     
-    TerminalUltility *terminal = [[TerminalUltility alloc] init];
-    [terminal open:[ideEditor.fileURL path]];
-}
-
-- (void)doInsertIfDef
-{
-    DVTSourceTextView *sourceTextView = [DTXcodeUtils currentSourceTextView];
-    NSRange selectedTextRange = [sourceTextView selectedRange];
-    NSString *selectedString = [sourceTextView.textStorage.string substringWithRange:selectedTextRange];
-    NSString *ifDefInsert = @"#ifdef <CONDITION>";
-    NSString *endIfInsert = @"#endif";
-    NSString *newString = [NSString stringWithFormat:@"%@\n%@\n%@", ifDefInsert,
-                                 selectedString, endIfInsert];
-    
-    if (selectedString) {
-        [sourceTextView replaceCharactersInRange:selectedTextRange withString:newString];
-        NSRange newRange = NSMakeRange(selectedTextRange.location, newString.length);
-        [sourceTextView setSelectedRange:newRange];
-    }
+    NSString *parentFolderPath = [[ideEditor.fileURL path] stringByDeletingLastPathComponent];
+    [Ultility openTerminalOnFolder:parentFolderPath];
 }
 
 - (void)dealloc
